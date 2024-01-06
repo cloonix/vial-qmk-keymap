@@ -10,3 +10,9 @@ Keymap/QMK features (see `config.h` and `rules.mk`)
 - Unicode support with wincompose
 - Random emoji custom key and function
 - Leader key enabled
+
+## Layers
+
+## Layer (L_01)
+
+![Layer 01](docs/keychron-k8-pro-iso-rgb.png?raw=true "Layer 01")
