@@ -9,7 +9,13 @@
 #define VIAL_UNLOCK_COMBO_COLS { 0, 13 }
 
 #define DYNAMIC_KEYMAP_MACRO_COUNT 32
-#define VIAL_TAP_DANCE_ENTRIES 32
+#define DYNAMIC_KEYMAP_LAYER_COUNT 5
+#define VIAL_TAP_DANCE_ENTRIES 16
+#define VIAL_COMBO_ENTRIES 16
+
+#define ONESHOT_TIMEOUT 2500
+#define LEADER_NO_TIMEOUT
+#define LEADER_TIMEOUT 175
 
 // Custom: spacet cadet mappings (for ISO-DE Layout)
 /* 
