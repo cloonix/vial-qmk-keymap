@@ -14,4 +14,4 @@ LTO_ENABLE = yes
 # todo set to no again
 VIAL_INSECURE = yes
 COMMAND_ENABLE = no
-CONSOLE_ENABLE = no
+CONSOLE_ENABLE = yes
