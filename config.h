@@ -2,6 +2,7 @@
 
 #pragma once
 
+// enables DEBUGGING with Keycode DB_TOGG and CONSOLE_ENABLE
 #undef NO_DEBUG
 
 //Vial Keyboard UID
