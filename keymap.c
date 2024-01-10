@@ -59,14 +59,14 @@ const uint32_t PROGMEM unicode_map[] = {
 };
 
 enum custom_keycodes {
-  UPDIR = SAFE_RANGE,
-  EMOJI
+  EMOJI = SAFE_RANGE,
+  
 };
 
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   [L_01] = LAYOUT_tkl_iso(
     TD(0),   KC_F1,    KC_F2,    KC_F3,    KC_F4,    KC_F5,    KC_F6,    KC_F7,    KC_F8,    KC_F9,    KC_F10,   KC_F11,   KC_F12,                   TD(4),    KC_NO,    RGB_TOG,
-    TD(5),   TD(8),    KC_2,     KC_3,     KC_4,     KC_5,     KC_6,     KC_7,     KC_8,     KC_9,     KC_0,     TD(9),    KC_EQL,     TD(7),        KC_INS,   KC_HOME,  KC_PGUP,
+    TD(5),   TD(8),    KC_2,     KC_3,     KC_4,     KC_5,     KC_6,     KC_7,     KC_8,     KC_9,     KC_0,     TD(9),    KC_EQL,     KC_BSPC,        KC_INS,   KC_HOME,  KC_PGUP,
     TD(6),   KC_Q,     KC_W,     KC_E,     KC_R,     KC_T,     KC_Y,     KC_U,     KC_I,     KC_O,     KC_P,     KC_LBRC,  KC_RBRC,                  KC_DEL,   KC_END,   KC_PGDN,
     TD(1),   KC_A,     KC_S,     KC_D,     KC_F,     KC_G,     KC_H,     KC_J,     KC_K,     KC_L,     KC_SCLN,  KC_QUOT,  KC_NUHS,    KC_ENT,
     KC_LSFT, KC_NUBS,  KC_Z,     KC_X,     KC_C,     KC_V,     KC_B,     KC_N,     KC_M,     KC_COMM,  KC_DOT,   KC_SLSH,              KC_RSFT,                KC_UP,
@@ -120,26 +120,41 @@ static uint8_t simple_rand(void) {
 }
 
 void keyboard_post_init_user(void) {
-    vial_tap_dance_entry_t td1 = { KC_ESC, KC_NO, KC_NO, LALT(KC_F4), TAPPING_TERM };
-    dynamic_keymap_set_tap_dance(0, &td1); 
-    vial_tap_dance_entry_t td2 = { KC_CAPS_LOCK, MO(2), KC_NO, KC_NO, TAPPING_TERM };
-    dynamic_keymap_set_tap_dance(1, &td2); 
-    vial_tap_dance_entry_t td3 = { KC_LGUI, KC_LGUI, LALT(KC_SPACE), KC_NO, TAPPING_TERM };
-    dynamic_keymap_set_tap_dance(2, &td3);
-    vial_tap_dance_entry_t td4 = { KC_BSPC, KC_LGUI, LCTL(KC_BSPC), KC_NO, TAPPING_TERM };
-    dynamic_keymap_set_tap_dance(3, &td4);
-    vial_tap_dance_entry_t td5 = { KC_PSCR, LCTL(KC_PSCR), LALT(KC_PSCR), KC_NO, TAPPING_TERM };
-    dynamic_keymap_set_tap_dance(4, &td5);
-    vial_tap_dance_entry_t td6 = { QK_LEAD, KC_GRAVE, TG(3), KC_NO, TAPPING_TERM };
-    dynamic_keymap_set_tap_dance(5, &td6);
-    vial_tap_dance_entry_t td7 = { KC_TAB, KC_NO, KC_NO, LGUI(KC_TAB), TAPPING_TERM };
-    dynamic_keymap_set_tap_dance(6, &td7);
-    vial_tap_dance_entry_t td8 = { KC_BSPC, KC_NO, LCTL(KC_BSPC), KC_NO, TAPPING_TERM };
-    dynamic_keymap_set_tap_dance(7, &td8);
-    vial_tap_dance_entry_t td9 = { KC_1, KC_1, KC_1, UM(EXCL), TAPPING_TERM };
-    dynamic_keymap_set_tap_dance(8, &td9);
-    vial_tap_dance_entry_t td10 = { KC_MINS, KC_MINS, KC_MINS, UM(QUES), TAPPING_TERM };
-    dynamic_keymap_set_tap_dance(9, &td10);
+  // vial tap dances
+  vial_tap_dance_entry_t td1 = { KC_ESC, KC_NO, KC_NO, LALT(KC_F4), TAPPING_TERM };
+  dynamic_keymap_set_tap_dance(0, &td1); 
+  vial_tap_dance_entry_t td2 = { KC_CAPS_LOCK, MO(2), KC_NO, KC_NO, TAPPING_TERM };
+  dynamic_keymap_set_tap_dance(1, &td2); 
+  vial_tap_dance_entry_t td3 = { KC_LGUI, KC_LGUI, LALT(KC_SPACE), KC_NO, TAPPING_TERM };
+  dynamic_keymap_set_tap_dance(2, &td3);
+  vial_tap_dance_entry_t td4 = { KC_BSPC, KC_LGUI, LCTL(KC_BSPC), KC_NO, TAPPING_TERM };
+  dynamic_keymap_set_tap_dance(3, &td4);
+  vial_tap_dance_entry_t td5 = { KC_PSCR, LCTL(KC_PSCR), LALT(KC_PSCR), KC_NO, TAPPING_TERM };
+  dynamic_keymap_set_tap_dance(4, &td5);
+  vial_tap_dance_entry_t td6 = { QK_LEAD, KC_GRAVE, TG(3), KC_NO, TAPPING_TERM };
+  dynamic_keymap_set_tap_dance(5, &td6);
+  vial_tap_dance_entry_t td7 = { KC_TAB, KC_NO, KC_NO, LGUI(KC_TAB), TAPPING_TERM };
+  dynamic_keymap_set_tap_dance(6, &td7);
+  vial_tap_dance_entry_t td8 = { KC_BSPC, KC_NO, LCTL(KC_BSPC), KC_NO, TAPPING_TERM };
+  dynamic_keymap_set_tap_dance(7, &td8);
+  vial_tap_dance_entry_t td9 = { KC_1, KC_1, KC_1, UM(EXCL), TAPPING_TERM };
+  dynamic_keymap_set_tap_dance(8, &td9);
+  vial_tap_dance_entry_t td10 = { KC_MINS, KC_MINS, KC_MINS, UM(QUES), TAPPING_TERM };
+  dynamic_keymap_set_tap_dance(9, &td10);
+
+  /*  key overrides (values = bit shift)
+  activate when the trigger key is pressed down (1),
+  activate when a necessary modifier is pressed down (2)
+  activate when a negative modifier is released (4),
+  activate on one modifier (8),
+  don't deactivate when another key is pressed down (16),
+  don't register the trigger key again after the override is deactivated (32),
+  key override enable = (128), 
+  */
+
+  // vial_key_override_entry_t ko1 = { KC_A, TD(5), 1, 2, 0, 2, 135 };
+  // dynamic_keymap_set_key_override(0, &ko1);
+
 }
 
 // macros
@@ -148,11 +163,7 @@ bool process_record_user(uint16_t keycode, keyrecord_t* record) {
    dprintf("KL: kc: 0x%04X, col: %2u, row: %2u, pressed: %u, time: %5u, int: %u, count: %u\n", keycode, record->event.key.col, record->event.key.row, record->event.pressed, record->event.time, record->tap.interrupted, record->tap.count);
 
   switch (keycode) {
-    case UPDIR:  // Types ../ to go up a directory on the shell.
-      if (record->event.pressed) {
-        SEND_STRING("../" SS_TAP(X_ENT));
-      }
-      return false;
+
     case EMOJI:
       if (record->event.pressed) {
         static const char* emojis[] = {"🤩", "🌞", "👍", "😁", "😃", "🍻", "🥳", "😻"};
@@ -224,4 +235,3 @@ bool rgb_matrix_indicators_advanced_user(uint8_t led_min, uint8_t led_max) {
 
   return false;
 }
-
