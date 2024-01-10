@@ -20,7 +20,7 @@
 // clang-format off
 enum layers{
   L_01, // 0
-  L_02, // 1
+  L_FN, // 1
   L_03, // 2
   L_GAME, // 3
   L_EMOJI // 4
@@ -28,14 +28,34 @@ enum layers{
 
 enum unicode_names {
     ANGRY,
+    BEER,
+    EXCL,
+    COOL,
     CRY,
+    HEART,
+    QUES,
+    ROFL,
+    SALU,
     THUMB,
+    VOMIT,
+    WINK,
+    ZZZ,
 };
 
 const uint32_t PROGMEM unicode_map[] = {
     [ANGRY] = 0x1F92C,  // 🤬
+    [BEER]  = 0x1F37B,  // 🍻
+    [COOL]  = 0x1F60E,  // 😎
     [CRY]   = 0x1F622,  // 😢
+    [EXCL]  = 0x2757,   // ❗
+    [HEART] = 0x1F496,  // ️️💖
+    [QUES]  = 0x2753,   // ❓
+    [ROFL]  = 0x1F923,  // 🤣
+    [SALU]  = 0x1FAE1,  // 🫡
     [THUMB] = 0x1F44D,  // 👍
+    [VOMIT] = 0x1F92E,  // 🤮
+    [WINK]  = 0x1F609,  // 😉
+    [ZZZ]   = 0x1F634,  // 😴
 };
 
 enum custom_keycodes {
@@ -44,45 +64,50 @@ enum custom_keycodes {
 };
 
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
-[L_01] = LAYOUT_tkl_iso(
-     TD(0),   KC_F1,    KC_F2,    KC_F3,    KC_F4,    KC_F5,    KC_F6,    KC_F7,    KC_F8,    KC_F9,    KC_F10,   KC_F11,   KC_F12,                   TD(4),    KC_TRNS,  RGB_TOG,
-     TD(5),   KC_1,     KC_2,     KC_3,     KC_4,     KC_5,     KC_6,     KC_7,     KC_8,     KC_9,     KC_0,     KC_MINS,  KC_EQL,     TD(7),        KC_INS,   KC_HOME,  KC_PGUP,
-     TD(6),   KC_Q,     KC_W,     KC_E,     KC_R,     KC_T,     KC_Y,     KC_U,     KC_I,     KC_O,     KC_P,     KC_LBRC,  KC_RBRC,                  KC_DEL,   KC_END,   KC_PGDN,
-     TD(1),   KC_A,     KC_S,     KC_D,     KC_F,     KC_G,     KC_H,     KC_J,     KC_K,     KC_L,     KC_SCLN,  KC_QUOT,  KC_NUHS,    KC_ENT,
-     KC_LSFT, KC_NUBS,  KC_Z,     KC_X,     KC_C,     KC_V,     KC_B,     KC_N,     KC_M,     KC_COMM,  KC_DOT,   KC_SLSH,              KC_RSFT,                KC_UP,
-     KC_LCTL, TD(2),    KC_LALT,                                KC_SPC,                                 KC_RALT,  KC_RGUI, MO(L_02),    KC_RCTL,      KC_LEFT,  KC_DOWN,  KC_RGHT),
+  [L_01] = LAYOUT_tkl_iso(
+    TD(0),   KC_F1,    KC_F2,    KC_F3,    KC_F4,    KC_F5,    KC_F6,    KC_F7,    KC_F8,    KC_F9,    KC_F10,   KC_F11,   KC_F12,                   TD(4),    KC_NO,    RGB_TOG,
+    TD(5),   TD(8),    KC_2,     KC_3,     KC_4,     KC_5,     KC_6,     KC_7,     KC_8,     KC_9,     KC_0,     TD(9),    KC_EQL,     TD(7),        KC_INS,   KC_HOME,  KC_PGUP,
+    TD(6),   KC_Q,     KC_W,     KC_E,     KC_R,     KC_T,     KC_Y,     KC_U,     KC_I,     KC_O,     KC_P,     KC_LBRC,  KC_RBRC,                  KC_DEL,   KC_END,   KC_PGDN,
+    TD(1),   KC_A,     KC_S,     KC_D,     KC_F,     KC_G,     KC_H,     KC_J,     KC_K,     KC_L,     KC_SCLN,  KC_QUOT,  KC_NUHS,    KC_ENT,
+    KC_LSFT, KC_NUBS,  KC_Z,     KC_X,     KC_C,     KC_V,     KC_B,     KC_N,     KC_M,     KC_COMM,  KC_DOT,   KC_SLSH,              KC_RSFT,                KC_UP,
+    KC_LCTL, TD(2),    KC_LALT,                                KC_SPC,                                 KC_RALT,  KC_RGUI,  MO(L_FN),    KC_RCTL,      KC_LEFT,  KC_DOWN,  KC_RGHT
+  ),
 
-[L_02] = LAYOUT_tkl_iso(
-     KC_TRNS,  KC_BRID,       KC_BRIU,  KC_TASK,        KC_FILE,  RGB_SPI,  RGB_SPD,  KC_MPRV,  KC_MPLY,  KC_MNXT,  KC_MUTE,  KC_VOLD,  KC_VOLU,            RGB_RMOD, RGB_MOD,  RGB_TOG,
-     KC_TRNS,  BT_HST1,       BT_HST2,  BT_HST3,        KC_TRNS,  KC_TRNS,  KC_TRNS,  KC_TRNS,  KC_TRNS,  KC_TRNS,  KC_TRNS,  KC_TRNS,  KC_TRNS,  KC_TRNS,  RGB_VAI,  RGB_HUI,  RGB_SAI,
-     KC_TRNS,  KC_TRNS,       KC_TRNS,  KC_TRNS,        KC_TRNS,  KC_TRNS,  KC_TRNS,  KC_TRNS,  KC_TRNS,  KC_TRNS,  KC_TRNS,  KC_TRNS,  KC_TRNS,            RGB_VAD,  RGB_HUD,  RGB_SAD,
-     KC_TRNS,  KC_TRNS,       KC_TRNS,  KC_TRNS,        KC_TRNS,  KC_TRNS,  KC_TRNS,  KC_TRNS,  KC_TRNS,  KC_TRNS,  KC_TRNS,  KC_TRNS,  KC_TRNS,  KC_TRNS,
-     KC_TRNS,  KC_TRNS,       KC_TRNS,  KC_TRNS,        KC_TRNS,  KC_TRNS,  BAT_LVL,  NK_TOGG,  KC_TRNS,  KC_TRNS,  KC_TRNS,  KC_TRNS,            KC_TRNS,            KC_TRNS,
-     KC_TRNS,  KC_TRNS,       KC_TRNS,                                      KC_TRNS,                                KC_TRNS,  KC_TRNS,  KC_TRNS,  KC_TRNS,  KC_TRNS,  KC_TRNS,  KC_TRNS),
+  [L_FN] = LAYOUT_tkl_iso(
+    KC_TRNS,  KC_BRID,       KC_BRIU,  KC_TASK,        KC_FILE,  RGB_SPI,  RGB_SPD,  KC_MPRV,  KC_MPLY,  KC_MNXT,  KC_MUTE,  KC_VOLD,  KC_VOLU,            RGB_RMOD, RGB_MOD,  RGB_TOG,
+    KC_TRNS,  BT_HST1,       BT_HST2,  BT_HST3,        KC_TRNS,  KC_TRNS,  KC_TRNS,  KC_TRNS,  KC_TRNS,  KC_TRNS,  KC_TRNS,  KC_TRNS,  KC_TRNS,  KC_TRNS,  RGB_VAI,  RGB_HUI,  RGB_SAI,
+    KC_TRNS,  KC_TRNS,       KC_TRNS,  KC_TRNS,        KC_TRNS,  KC_TRNS,  KC_TRNS,  KC_TRNS,  KC_TRNS,  KC_TRNS,  KC_TRNS,  KC_TRNS,  KC_TRNS,            RGB_VAD,  RGB_HUD,  RGB_SAD,
+    KC_TRNS,  KC_TRNS,       KC_TRNS,  KC_TRNS,        KC_TRNS,  KC_TRNS,  KC_TRNS,  KC_TRNS,  KC_TRNS,  KC_TRNS,  KC_TRNS,  KC_TRNS,  KC_TRNS,  KC_TRNS,
+    KC_TRNS,  KC_TRNS,       KC_TRNS,  KC_TRNS,        KC_TRNS,  KC_TRNS,  BAT_LVL,  NK_TOGG,  KC_TRNS,  KC_TRNS,  KC_TRNS,  KC_TRNS,            KC_TRNS,            KC_TRNS,
+    KC_TRNS,  KC_TRNS,       KC_TRNS,                                      KC_TRNS,                                KC_TRNS,  KC_TRNS,  KC_TRNS,  KC_TRNS,  KC_TRNS,  KC_TRNS,  KC_TRNS
+  ),
 
-[L_03] = LAYOUT_tkl_iso(
-     DM_RSTP, DM_REC1,        DM_PLY1,  DM_REC2,        DM_PLY2,  DB_TOGG,  KC_TRNS,  KC_TRNS,  KC_TRNS,  KC_TRNS,  KC_TRNS,  KC_TRNS,  KC_TRNS,            KC_PWR,   KC_WAKE,  KC_SLEP,
-     KC_NUM,  KC_TRNS,        KC_TRNS,  KC_TRNS,        KC_TRNS,  KC_TRNS,  KC_TRNS,  KC_TRNS,  KC_TRNS,  KC_TRNS,  KC_TRNS,  KC_TRNS,  KC_TRNS,  QK_BOOT,  KC_TRNS,  KC_TRNS,  KC_TRNS,
-     KC_TRNS, KC_TRNS,        KC_TRNS,  KC_TRNS,        KC_TRNS,  KC_TRNS,  KC_TRNS,  KC_TRNS,  KC_TRNS,  KC_TRNS,  KC_TRNS,  KC_TRNS,  KC_TRNS,            KC_TRNS,  KC_TRNS,  KC_TRNS,
-     KC_TRNS, C(G(KC_LEFT)),  KC_TRNS,  C(G(KC_RIGHT)), KC_TRNS,  KC_TRNS,  KC_TRNS,  KC_TRNS,  KC_TRNS,  KC_TRNS,  KC_TRNS,  KC_TRNS,  KC_TRNS,  KC_TRNS,
-     KC_TRNS, KC_TRNS,        KC_TRNS,  KC_TRNS,        KC_TRNS,  KC_TRNS,  KC_WHOM,  KC_TRNS,  KC_MAIL,  KC_TRNS,  KC_TRNS,  KC_TRNS,            KC_TRNS,            KC_TRNS,
-     KC_TRNS, KC_TRNS,        KC_TRNS,                                      KC_TRNS,                      KC_TRNS,  KC_TRNS,  KC_TRNS,  KC_TRNS,  KC_TRNS,  KC_TRNS,  KC_TRNS),
+  [L_03] = LAYOUT_tkl_iso(
+    DM_RSTP, DM_REC1,        DM_PLY1,  DM_REC2,        DM_PLY2,  DB_TOGG,  KC_TRNS,  KC_TRNS,  KC_TRNS,  KC_TRNS,  KC_TRNS,  KC_TRNS,  KC_TRNS,            KC_PWR,   KC_WAKE,  KC_SLEP,
+    KC_NUM,  KC_TRNS,        KC_TRNS,  KC_TRNS,        KC_TRNS,  KC_TRNS,  KC_TRNS,  KC_TRNS,  KC_TRNS,  KC_TRNS,  KC_TRNS,  KC_TRNS,  KC_TRNS,  QK_BOOT,  KC_TRNS,  KC_TRNS,  KC_TRNS,
+    KC_TRNS, KC_TRNS,        KC_TRNS,  KC_TRNS,        KC_TRNS,  KC_TRNS,  KC_TRNS,  KC_TRNS,  KC_TRNS,  KC_TRNS,  KC_TRNS,  KC_TRNS,  KC_TRNS,            KC_TRNS,  KC_TRNS,  KC_TRNS,
+    KC_TRNS, C(G(KC_LEFT)),  KC_TRNS,  C(G(KC_RIGHT)), KC_TRNS,  KC_TRNS,  KC_TRNS,  KC_TRNS,  KC_TRNS,  KC_TRNS,  KC_TRNS,  KC_TRNS,  KC_TRNS,  KC_TRNS,
+    KC_TRNS, KC_TRNS,        KC_TRNS,  KC_TRNS,        KC_TRNS,  KC_TRNS,  KC_WHOM,  KC_TRNS,  KC_MAIL,  KC_TRNS,  KC_TRNS,  KC_TRNS,            KC_TRNS,            KC_TRNS,
+    KC_TRNS, KC_TRNS,        KC_TRNS,                                      KC_TRNS,                      KC_TRNS,  KC_TRNS,  KC_TRNS,  KC_TRNS,  KC_TRNS,  KC_TRNS,  KC_TRNS
+  ),
 
-[L_EMOJI] = LAYOUT_tkl_iso(
-     KC_TRNS,  KC_TRNS,   KC_TRNS,  KC_TRNS,  KC_TRNS,  KC_TRNS,   KC_TRNS,  KC_TRNS,  KC_TRNS,  KC_TRNS,  KC_TRNS,  KC_TRNS,  KC_TRNS,            KC_TRNS,  KC_TRNS,  KC_TRNS,
-     KC_TRNS,  KC_TRNS,   KC_TRNS,  KC_TRNS,  KC_TRNS,  KC_TRNS,   KC_TRNS,  KC_TRNS,  KC_TRNS,  KC_TRNS,  KC_TRNS,  KC_TRNS,  KC_TRNS,  KC_TRNS,  KC_TRNS,  KC_TRNS,  KC_TRNS,
-     KC_TRNS,  KC_TRNS,   KC_TRNS,  KC_TRNS,  KC_TRNS,  UM(THUMB), KC_TRNS,  KC_TRNS,  KC_TRNS,  KC_TRNS,  KC_TRNS,  KC_TRNS,  KC_TRNS,            KC_TRNS,  KC_TRNS,  KC_TRNS,
-     KC_TRNS,  UM(ANGRY), KC_TRNS,  KC_TRNS,  KC_TRNS,  KC_TRNS,   KC_TRNS,  KC_TRNS,  KC_TRNS,  KC_TRNS,  KC_TRNS,  KC_TRNS,  KC_TRNS,  KC_TRNS,
-     KC_TRNS,  KC_TRNS,   KC_TRNS,  KC_TRNS,  UM(CRY),  KC_TRNS,   KC_TRNS,  KC_TRNS,  KC_TRNS,  EMOJI,    KC_TRNS,  KC_TRNS,            KC_TRNS,            KC_TRNS,
-     KC_TRNS,  KC_TRNS,   KC_TRNS,                                 KC_TRNS,                      KC_TRNS,  KC_TRNS,  KC_TRNS,  KC_TRNS,  KC_TRNS,  KC_TRNS,  KC_TRNS),
+  [L_EMOJI] = LAYOUT_tkl_iso(
+    KC_TRNS,  KC_TRNS,   KC_TRNS,  KC_TRNS,  KC_TRNS,  KC_TRNS,   KC_TRNS,   KC_TRNS,  KC_TRNS,  KC_TRNS,  KC_TRNS,  KC_TRNS,  KC_TRNS,            KC_TRNS,  KC_TRNS,  KC_TRNS,
+    KC_TRNS,  KC_TRNS,   KC_TRNS,  KC_TRNS,  KC_TRNS,  KC_TRNS,   KC_TRNS,   KC_TRNS,  UM(COOL), KC_TRNS,  KC_TRNS,  UM(QUES), KC_TRNS,  KC_TRNS,  KC_TRNS,  KC_TRNS,  KC_TRNS,
+    KC_TRNS,  KC_TRNS,   UM(WINK), KC_TRNS,  UM(ROFL), UM(THUMB), UM(ZZZ),   KC_TRNS,  KC_TRNS,  KC_TRNS,  KC_TRNS,  KC_TRNS,  KC_TRNS,            KC_TRNS,  KC_TRNS,  KC_TRNS,
+    KC_TRNS,  UM(ANGRY), UM(SALU), KC_TRNS,  KC_TRNS,  KC_TRNS,   UM(HEART), KC_TRNS,  KC_TRNS,  KC_TRNS,  KC_TRNS,  KC_TRNS,  KC_TRNS,  KC_TRNS,
+    KC_TRNS,  KC_TRNS,   KC_TRNS,  KC_TRNS,  UM(CRY),  UM(VOMIT), UM(BEER),  KC_TRNS,  KC_TRNS,  EMOJI,    KC_TRNS,  KC_TRNS,            KC_TRNS,            KC_TRNS,
+    KC_TRNS,  KC_TRNS,   KC_TRNS,                                 KC_TRNS,                       KC_TRNS,  KC_TRNS,  KC_TRNS,  KC_TRNS,  KC_TRNS,  KC_TRNS,  KC_TRNS
+  ),
 
-[L_GAME] = LAYOUT_tkl_iso(
-     KC_TRNS,  KC_TRNS,  KC_TRNS,  KC_TRNS,  KC_TRNS,  KC_TRNS,  KC_TRNS,  KC_TRNS,  KC_TRNS,  KC_TRNS,  KC_TRNS,  KC_TRNS,  KC_TRNS,            KC_TRNS,  KC_TRNS,  KC_TRNS,
-     TD(5),    KC_TRNS,  KC_TRNS,  KC_TRNS,  KC_TRNS,  KC_TRNS,  KC_TRNS,  KC_TRNS,  KC_TRNS,  KC_TRNS,  KC_TRNS,  KC_TRNS,  KC_TRNS,  KC_TRNS,  KC_TRNS,  KC_TRNS,  KC_TRNS,
-     KC_TRNS,  KC_TRNS,  KC_TRNS,  KC_TRNS,  KC_TRNS,  KC_TRNS,  KC_TRNS,  KC_TRNS,  KC_TRNS,  KC_TRNS,  KC_TRNS,  KC_TRNS,  KC_TRNS,            KC_TRNS,  KC_TRNS,  KC_TRNS,
-     KC_TRNS,  KC_TRNS,  KC_TRNS,  KC_TRNS,  KC_TRNS,  KC_TRNS,  KC_TRNS,  KC_TRNS,  KC_TRNS,  KC_TRNS,  KC_TRNS,  KC_TRNS,  KC_TRNS,  KC_TRNS,
-     KC_TRNS,  KC_TRNS,  KC_TRNS,  KC_TRNS,  KC_TRNS,  KC_TRNS,  KC_TRNS,  KC_TRNS,  KC_TRNS,  KC_TRNS,  KC_TRNS,  KC_TRNS,            KC_TRNS,            KC_TRNS,
-     KC_TRNS,  KC_TRNS,  KC_TRNS,                                KC_TRNS,                      KC_TRNS,  KC_TRNS,  KC_TRNS,  KC_TRNS,  KC_TRNS,  KC_TRNS,  KC_TRNS),
+  [L_GAME] = LAYOUT_tkl_iso(
+    KC_ESC,   KC_F1,    KC_F2,    KC_F3,    KC_F4,    KC_F5,    KC_F6,    KC_F7,    KC_F8,    KC_F9,    KC_F10,   KC_F11,   KC_F12,             TD(4),     KC_NO,    RGB_TOG,
+    TD(5),    KC_1,     KC_2,     KC_3,     KC_4,     KC_5,     KC_6,     KC_7,     KC_8,     KC_9,     KC_0,     KC_MINS,  KC_EQL,   KC_BSPC,  KC_INS,    KC_HOME,  KC_PGUP,
+    KC_TAB,   KC_Q,     KC_W,     KC_E,     KC_R,     KC_T,     KC_Y,     KC_U,     KC_I,     KC_O,     KC_P,     KC_LBRC,  KC_RBRC,            KC_DEL,    KC_END,   KC_PGDN,
+    KC_CAPS,  KC_A,     KC_S,     KC_D,     KC_F,     KC_G,     KC_H,     KC_J,     KC_K,     KC_L,     KC_SCLN,  KC_QUOT,  KC_NUHS,  KC_ENT,
+    KC_LSFT,  KC_NUBS,  KC_Z,     KC_X,     KC_C,     KC_V,     KC_B,     KC_N,     KC_M,     KC_COMM,  KC_DOT,   KC_SLSH,            KC_RSFT,             KC_UP,
+    KC_LCTL,  KC_NO,    KC_LALT,                                KC_SPC,                                 KC_RALT,  KC_NO,    MO(L_FN), KC_RCTL,  KC_LEFT,   KC_DOWN,  KC_RGHT
+  ),
 
 };
 
@@ -111,6 +136,10 @@ void keyboard_post_init_user(void) {
     dynamic_keymap_set_tap_dance(6, &td7);
     vial_tap_dance_entry_t td8 = { KC_BSPC, KC_NO, LCTL(KC_BSPC), KC_NO, TAPPING_TERM };
     dynamic_keymap_set_tap_dance(7, &td8);
+    vial_tap_dance_entry_t td9 = { KC_1, KC_1, KC_1, UM(EXCL), TAPPING_TERM };
+    dynamic_keymap_set_tap_dance(8, &td9);
+    vial_tap_dance_entry_t td10 = { KC_MINS, KC_MINS, KC_MINS, UM(QUES), TAPPING_TERM };
+    dynamic_keymap_set_tap_dance(9, &td10);
 }
 
 // macros
