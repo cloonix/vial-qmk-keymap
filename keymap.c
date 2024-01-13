@@ -66,11 +66,11 @@ enum custom_keycodes {
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   [L_01] = LAYOUT_tkl_iso(
     TD(0),   KC_F1,    KC_F2,    KC_F3,    KC_F4,    KC_F5,    KC_F6,    KC_F7,    KC_F8,    KC_F9,    KC_F10,   KC_F11,   KC_F12,                   TD(4),    KC_NO,    RGB_TOG,
-    TD(5),   TD(8),    KC_2,     KC_3,     KC_4,     KC_5,     KC_6,     KC_7,     KC_8,     KC_9,     KC_0,     TD(9),    KC_EQL,     KC_BSPC,        KC_INS,   KC_HOME,  KC_PGUP,
+    TD(5),   TD(8),    KC_2,     KC_3,     KC_4,     KC_5,     KC_6,     KC_7,     KC_8,     KC_9,     KC_0,     TD(9),    KC_EQL,     KC_BSPC,      KC_INS,   KC_HOME,  KC_PGUP,
     TD(6),   KC_Q,     KC_W,     KC_E,     KC_R,     KC_T,     KC_Y,     KC_U,     KC_I,     KC_O,     KC_P,     KC_LBRC,  KC_RBRC,                  KC_DEL,   KC_END,   KC_PGDN,
     TD(1),   KC_A,     KC_S,     KC_D,     KC_F,     KC_G,     KC_H,     KC_J,     KC_K,     KC_L,     KC_SCLN,  KC_QUOT,  KC_NUHS,    KC_ENT,
     KC_LSFT, KC_NUBS,  KC_Z,     KC_X,     KC_C,     KC_V,     KC_B,     KC_N,     KC_M,     KC_COMM,  KC_DOT,   KC_SLSH,              KC_RSFT,                KC_UP,
-    KC_LCTL, TD(2),    KC_LALT,                                KC_SPC,                                 KC_RALT,  KC_RGUI,  MO(L_FN),    KC_RCTL,      KC_LEFT,  KC_DOWN,  KC_RGHT
+    KC_LCTL, TD(2),    KC_LALT,                                KC_SPC,                                 KC_RALT,  KC_RGUI,  MO(L_FN),   KC_RCTL,      KC_LEFT,  KC_DOWN,  KC_RGHT
   ),
 
   [L_FN] = LAYOUT_tkl_iso(
@@ -83,12 +83,12 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   ),
 
   [L_03] = LAYOUT_tkl_iso(
-    DM_RSTP, DM_REC1,        DM_PLY1,  DM_REC2,        DM_PLY2,  DB_TOGG,  KC_TRNS,  KC_TRNS,  KC_TRNS,  KC_TRNS,  KC_TRNS,  KC_TRNS,  KC_TRNS,            KC_PWR,   KC_WAKE,  KC_SLEP,
-    KC_NUM,  KC_TRNS,        KC_TRNS,  KC_TRNS,        KC_TRNS,  KC_TRNS,  KC_TRNS,  KC_TRNS,  KC_TRNS,  KC_TRNS,  KC_TRNS,  KC_TRNS,  KC_TRNS,  QK_BOOT,  KC_TRNS,  KC_TRNS,  KC_TRNS,
-    KC_TRNS, KC_TRNS,        KC_TRNS,  KC_TRNS,        KC_TRNS,  KC_TRNS,  KC_TRNS,  KC_TRNS,  KC_TRNS,  KC_TRNS,  KC_TRNS,  KC_TRNS,  KC_TRNS,            KC_TRNS,  KC_TRNS,  KC_TRNS,
-    KC_TRNS, C(G(KC_LEFT)),  KC_TRNS,  C(G(KC_RIGHT)), KC_TRNS,  KC_TRNS,  KC_TRNS,  KC_TRNS,  KC_TRNS,  KC_TRNS,  KC_TRNS,  KC_TRNS,  KC_TRNS,  KC_TRNS,
-    KC_TRNS, KC_TRNS,        KC_TRNS,  KC_TRNS,        KC_TRNS,  KC_TRNS,  KC_WHOM,  KC_TRNS,  KC_MAIL,  KC_TRNS,  KC_TRNS,  KC_TRNS,            KC_TRNS,            KC_TRNS,
-    KC_TRNS, KC_TRNS,        KC_TRNS,                                      KC_TRNS,                      KC_TRNS,  KC_TRNS,  KC_TRNS,  KC_TRNS,  KC_TRNS,  KC_TRNS,  KC_TRNS
+    DM_RSTP, DM_REC1,        DM_PLY1,     DM_REC2,        DM_PLY2,     DB_TOGG,     KC_TRNS,  KC_TRNS,  KC_TRNS,  KC_TRNS,  KC_TRNS,  KC_TRNS,  KC_TRNS,            KC_PWR,   KC_WAKE,  KC_SLEP,
+    KC_NUM,  KC_TRNS,        KC_TRNS,     KC_TRNS,        KC_TRNS,     KC_TRNS,     KC_TRNS,  KC_TRNS,  KC_TRNS,  KC_TRNS,  KC_TRNS,  KC_TRNS,  KC_TRNS,  QK_BOOT,  KC_TRNS,  KC_TRNS,  KC_TRNS,
+    KC_TRNS, KC_TRNS,        C(S(KC_W)),  C(S(KC_E)),     C(S(KC_R)),  C(S(KC_T)),  KC_TRNS,  KC_TRNS,  KC_TRNS,  KC_TRNS,  KC_TRNS,  KC_TRNS,  KC_TRNS,            KC_TRNS,  KC_TRNS,  KC_TRNS,
+    KC_TRNS, C(G(KC_LEFT)),  C(S(KC_S)),  C(G(KC_RIGHT)), KC_TRNS,     C(S(KC_G)),  KC_TRNS,  KC_TRNS,  KC_TRNS,  KC_TRNS,  KC_TRNS,  KC_TRNS,  KC_TRNS,  KC_TRNS,
+    KC_TRNS, KC_TRNS,        KC_TRNS,     KC_TRNS,        KC_TRNS,     KC_TRNS,     KC_WHOM,  KC_TRNS,  KC_MAIL,  KC_TRNS,  KC_TRNS,  KC_TRNS,            KC_TRNS,            KC_TRNS,
+    KC_TRNS, KC_TRNS,        KC_TRNS,                                               KC_TRNS,                      KC_TRNS,  KC_TRNS,  KC_TRNS,  KC_TRNS,  KC_TRNS,  KC_TRNS,  KC_TRNS
   ),
 
   [L_EMOJI] = LAYOUT_tkl_iso(
@@ -123,7 +123,7 @@ void keyboard_post_init_user(void) {
   // vial tap dances
   vial_tap_dance_entry_t td1 = { KC_ESC, KC_NO, KC_NO, LALT(KC_F4), TAPPING_TERM };
   dynamic_keymap_set_tap_dance(0, &td1); 
-  vial_tap_dance_entry_t td2 = { KC_CAPS_LOCK, MO(2), KC_NO, KC_NO, TAPPING_TERM };
+  vial_tap_dance_entry_t td2 = { MO(2), MO(2), KC_CAPS_LOCK, KC_NO, TAPPING_TERM };
   dynamic_keymap_set_tap_dance(1, &td2); 
   vial_tap_dance_entry_t td3 = { KC_LGUI, KC_LGUI, LALT(KC_SPACE), KC_NO, TAPPING_TERM };
   dynamic_keymap_set_tap_dance(2, &td3);
