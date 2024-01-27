@@ -123,7 +123,7 @@ void keyboard_post_init_user(void) {
   // vial tap dances
   vial_tap_dance_entry_t td1 = { KC_ESC, KC_NO, KC_NO, LALT(KC_F4), TAPPING_TERM };
   dynamic_keymap_set_tap_dance(0, &td1); 
-  vial_tap_dance_entry_t td2 = { MO(2), MO(2), KC_CAPS_LOCK, KC_NO, TAPPING_TERM };
+  vial_tap_dance_entry_t td2 = { KC_NO, MO(2), KC_CAPS_LOCK, KC_NO, TAPPING_TERM };
   dynamic_keymap_set_tap_dance(1, &td2); 
   vial_tap_dance_entry_t td3 = { KC_LGUI, KC_LGUI, LALT(KC_SPACE), KC_NO, TAPPING_TERM };
   dynamic_keymap_set_tap_dance(2, &td3);
