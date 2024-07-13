@@ -19,11 +19,14 @@
 
 // clang-format off
 enum layers{
-  L_01, // 0
-  L_FN, // 1
-  L_03, // 2
-  L_GAME, // 3
-  L_EMOJI // 4
+  L_WIN01, // 0 - DIP switch
+  L_WIN02, // 1
+  L_MAC01, // 2 - DIP switch
+  L_MAC02, // 3
+  L_WINFN, // 4
+  L_MACFN, // 5
+  L_GAME, // 6
+  L_EMOJI, // 7
 };
 
 enum unicode_names {
@@ -64,16 +67,16 @@ enum custom_keycodes {
 };
 
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
-  [L_01] = LAYOUT_tkl_iso(
+  [L_WIN01] = LAYOUT_tkl_iso(
     TD(0),   KC_F1,    KC_F2,    KC_F3,    KC_F4,    KC_F5,    KC_F6,    KC_F7,    KC_F8,    KC_F9,    KC_F10,   KC_F11,   KC_F12,                   TD(4),    KC_NO,    RGB_TOG,
-    TD(5),   KC_1,     KC_2,     KC_3,     KC_4,     KC_5,     KC_6,     KC_7,     KC_8,     KC_9,     KC_0,     KC_MINS,  KC_EQL,     KC_BSPC,      KC_INS,   TD(8),    KC_PGUP,
+    TD(5),   KC_1,     KC_2,     KC_3,     KC_4,     KC_5,     KC_6,     KC_7,     KC_8,     KC_9,     KC_0,     KC_MINS,  KC_EQL,     KC_BSPC,      KC_INS,   TD(3),    KC_PGUP,
     TD(6),   KC_Q,     KC_W,     KC_E,     KC_R,     KC_T,     KC_Y,     KC_U,     KC_I,     KC_O,     KC_P,     KC_LBRC,  KC_RBRC,                  KC_DEL,   KC_END,   KC_PGDN,
     TD(1),   KC_A,     KC_S,     KC_D,     KC_F,     KC_G,     KC_H,     KC_J,     KC_K,     KC_L,     KC_SCLN,  KC_QUOT,  KC_NUHS,    KC_ENT,
     KC_LSFT, KC_NUBS,  KC_Z,     KC_X,     KC_C,     KC_V,     KC_B,     KC_N,     KC_M,     KC_COMM,  KC_DOT,   KC_SLSH,              KC_RSFT,                KC_UP,
-    KC_LCTL, TD(2),    KC_LALT,                                KC_SPC,                                 KC_RALT,  KC_RGUI,  MO(L_FN),   KC_RCTL,      KC_LEFT,  KC_DOWN,  KC_RGHT
+    KC_LCTL, TD(2),    KC_LALT,                                KC_SPC,                                 KC_RALT,  KC_RGUI,  MO(L_WINFN),   KC_RCTL,      KC_LEFT,  KC_DOWN,  KC_RGHT
   ),
 
-  [L_FN] = LAYOUT_tkl_iso(
+  [L_WINFN] = LAYOUT_tkl_iso(
     KC_TRNS,  KC_BRID,       KC_BRIU,  KC_TASK,        KC_FILE,  RGB_SPI,  RGB_SPD,  KC_MPRV,  KC_MPLY,  KC_MNXT,  KC_MUTE,  KC_VOLD,  KC_VOLU,            RGB_RMOD, RGB_MOD,  RGB_TOG,
     KC_TRNS,  BT_HST1,       BT_HST2,  BT_HST3,        KC_TRNS,  KC_TRNS,  KC_TRNS,  KC_TRNS,  KC_TRNS,  KC_TRNS,  KC_TRNS,  KC_TRNS,  KC_TRNS,  KC_TRNS,  RGB_VAI,  RGB_HUI,  RGB_SAI,
     KC_TRNS,  KC_TRNS,       KC_TRNS,  KC_TRNS,        KC_TRNS,  KC_TRNS,  KC_TRNS,  KC_TRNS,  KC_TRNS,  KC_TRNS,  KC_TRNS,  KC_TRNS,  KC_TRNS,            RGB_VAD,  RGB_HUD,  RGB_SAD,
@@ -82,7 +85,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     KC_TRNS,  KC_TRNS,       KC_TRNS,                                      KC_TRNS,                                KC_TRNS,  KC_TRNS,  KC_TRNS,  KC_TRNS,  KC_TRNS,  KC_TRNS,  KC_TRNS
   ),
 
-  [L_03] = LAYOUT_tkl_iso(
+  [L_WIN02] = LAYOUT_tkl_iso(
     DM_RSTP, DM_REC1,        DM_PLY1,             DM_REC2,        DM_PLY2,     DB_TOGG,     KC_TRNS,  KC_TRNS,  KC_TRNS,  KC_TRNS,  KC_TRNS,  KC_TRNS,  KC_TRNS,            KC_PWR,   KC_WAKE,  KC_SLEP,
     KC_NUM,  KC_TRNS,        KC_TRNS,             KC_TRNS,        KC_TRNS,     KC_TRNS,     KC_TRNS,  KC_TRNS,  KC_TRNS,  KC_TRNS,  KC_TRNS,  KC_TRNS,  KC_TRNS,  QK_BOOT,  KC_TRNS,  KC_TRNS,  KC_TRNS,
     KC_TRNS, KC_TRNS,        C(S(KC_W)),          C(S(KC_E)),     C(S(KC_R)),  C(S(KC_T)),  KC_TRNS,  KC_TRNS,  KC_TRNS,  KC_TRNS,  KC_TRNS,  KC_TRNS,  KC_TRNS,            KC_TRNS,  KC_TRNS,  KC_TRNS,
@@ -106,7 +109,34 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     KC_TAB,   KC_Q,     KC_W,     KC_E,     KC_R,     KC_T,     KC_Y,     KC_U,     KC_I,     KC_O,     KC_P,     KC_LBRC,  KC_RBRC,            KC_DEL,    KC_END,   KC_PGDN,
     KC_CAPS,  KC_A,     KC_S,     KC_D,     KC_F,     KC_G,     KC_H,     KC_J,     KC_K,     KC_L,     KC_SCLN,  KC_QUOT,  KC_NUHS,  KC_ENT,
     KC_LSFT,  KC_NUBS,  KC_Z,     KC_X,     KC_C,     KC_V,     KC_B,     KC_N,     KC_M,     KC_COMM,  KC_DOT,   KC_SLSH,            KC_RSFT,             KC_UP,
-    KC_LCTL,  KC_NO,    KC_LALT,                                KC_SPC,                                 KC_RALT,  KC_NO,    MO(L_FN), KC_RCTL,  KC_LEFT,   KC_DOWN,  KC_RGHT
+    KC_LCTL,  KC_NO,    KC_LALT,                                KC_SPC,                                 KC_RALT,  KC_NO,    MO(L_WINFN), KC_RCTL,  KC_LEFT,   KC_DOWN,  KC_RGHT
+  ),
+
+  [L_MAC01] = LAYOUT_tkl_iso(
+    KC_ESC,   KC_F1,    KC_F2,    KC_F3,    KC_F4,    KC_F5,    KC_F6,    KC_F7,    KC_F8,    KC_F9,    KC_F10,   KC_F11,      KC_F12,                KC_PSCR,   KC_NO,    RGB_TOG,
+    KC_GRV,   KC_1,     KC_2,     KC_3,     KC_4,     KC_5,     KC_6,     KC_7,     KC_8,     KC_9,     KC_0,     KC_MINS,     KC_EQL,      KC_BSPC,  KC_INS,    KC_HOME,  KC_PGUP,
+    KC_TAB,   KC_Q,     KC_W,     KC_E,     KC_R,     KC_T,     KC_Y,     KC_U,     KC_I,     KC_O,     KC_P,     KC_LBRC,     KC_RBRC,               KC_DEL,    KC_END,   KC_PGDN,
+    KC_CAPS,  KC_A,     KC_S,     KC_D,     KC_F,     KC_G,     KC_H,     KC_J,     KC_K,     KC_L,     KC_SCLN,  KC_QUOT,     KC_NUHS,     KC_ENT,
+    KC_LSFT,  KC_NUBS,  KC_Z,     KC_X,     KC_C,     KC_V,     KC_B,     KC_N,     KC_M,     KC_COMM,  KC_DOT,   KC_SLSH,                  KC_RSFT,             KC_UP,
+    KC_LCTL,  KC_LOPTN, KC_LCMMD,                               KC_SPC,                                 KC_RCMMD, MO(L_MAC02), MO(L_MACFN), KC_RCTL,  KC_LEFT,   KC_DOWN,  KC_RGHT
+  ),
+
+  [L_MAC02] = LAYOUT_tkl_iso(
+    KC_TRNS,  KC_TRNS,   KC_TRNS,  KC_TRNS,  KC_TRNS,  KC_TRNS,   KC_TRNS, KC_TRNS,  KC_TRNS,  KC_TRNS,  KC_TRNS,  KC_TRNS,  KC_TRNS,            KC_TRNS,  KC_TRNS,  KC_TRNS,
+    KC_TRNS,  KC_TRNS,   KC_TRNS,  KC_TRNS,  KC_TRNS,  KC_TRNS,   KC_TRNS, KC_TRNS,  KC_TRNS,  KC_TRNS,  KC_TRNS,  KC_TRNS,  KC_TRNS,  KC_TRNS,  KC_TRNS,  KC_TRNS,  KC_TRNS,
+    KC_TRNS,  KC_TRNS,   KC_TRNS,  KC_TRNS,  KC_TRNS,  KC_TRNS,   KC_TRNS, KC_TRNS,  KC_TRNS,  KC_TRNS,  KC_TRNS,  KC_TRNS,  KC_TRNS,            KC_TRNS,  KC_TRNS,  KC_TRNS,
+    KC_TRNS,  KC_TRNS,   KC_TRNS,  KC_TRNS,  KC_TRNS,  KC_TRNS,   KC_TRNS, KC_TRNS,  KC_TRNS,  KC_TRNS,  KC_TRNS,  KC_TRNS,  KC_TRNS,  KC_TRNS,
+    KC_TRNS,  KC_TRNS,   KC_TRNS,  KC_TRNS,  KC_TRNS,  KC_TRNS,   KC_TRNS, KC_TRNS,  KC_TRNS,  KC_TRNS,  KC_TRNS,  KC_TRNS,            KC_TRNS,            KC_TRNS,
+    KC_TRNS,  KC_TRNS,   KC_TRNS,                                 KC_TRNS,                               KC_TRNS,  KC_TRNS,  KC_TRNS,  KC_TRNS,  KC_TRNS,  KC_TRNS,  KC_TRNS
+  ),
+
+  [L_MACFN] = LAYOUT_tkl_iso(
+    KC_TRNS,  KC_TRNS,   KC_TRNS,  KC_TRNS,  KC_TRNS,  KC_TRNS,   KC_TRNS, KC_TRNS,  KC_TRNS,  KC_TRNS,  KC_TRNS,  KC_TRNS,  KC_TRNS,            KC_TRNS,  KC_TRNS,  KC_TRNS,
+    KC_TRNS,  KC_TRNS,   KC_TRNS,  KC_TRNS,  KC_TRNS,  KC_TRNS,   KC_TRNS, KC_TRNS,  KC_TRNS,  KC_TRNS,  KC_TRNS,  KC_TRNS,  KC_TRNS,  KC_TRNS,  KC_TRNS,  KC_TRNS,  KC_TRNS,
+    KC_TRNS,  KC_TRNS,   KC_TRNS,  KC_TRNS,  KC_TRNS,  KC_TRNS,   KC_TRNS, KC_TRNS,  KC_TRNS,  KC_TRNS,  KC_TRNS,  KC_TRNS,  KC_TRNS,            KC_TRNS,  KC_TRNS,  KC_TRNS,
+    KC_TRNS,  KC_TRNS,   KC_TRNS,  KC_TRNS,  KC_TRNS,  KC_TRNS,   KC_TRNS, KC_TRNS,  KC_TRNS,  KC_TRNS,  KC_TRNS,  KC_TRNS,  KC_TRNS,  KC_TRNS,
+    KC_TRNS,  KC_TRNS,   KC_TRNS,  KC_TRNS,  KC_TRNS,  KC_TRNS,   KC_TRNS, KC_TRNS,  KC_TRNS,  KC_TRNS,  KC_TRNS,  KC_TRNS,            KC_TRNS,            KC_TRNS,
+    KC_TRNS,  KC_TRNS,   KC_TRNS,                                 KC_TRNS,                               KC_TRNS,  KC_TRNS,  KC_TRNS,  KC_TRNS,  KC_TRNS,  KC_TRNS,  KC_TRNS
   ),
 
 };
@@ -122,23 +152,19 @@ static uint8_t simple_rand(void) {
 void keyboard_post_init_user(void) {
   // vial tap dances
   vial_tap_dance_entry_t td1 = { KC_ESC, KC_NO, KC_NO, LALT(KC_F4), TAPPING_TERM };
-  dynamic_keymap_set_tap_dance(0, &td1); 
-  vial_tap_dance_entry_t td2 = { KC_NO, MO(2), KC_CAPS_LOCK, KC_NO, TAPPING_TERM };
-  dynamic_keymap_set_tap_dance(1, &td2); 
-  vial_tap_dance_entry_t td3 = { KC_LGUI, KC_LGUI, LALT(KC_SPACE), KC_NO, TAPPING_TERM };
-  dynamic_keymap_set_tap_dance(2, &td3);
-  vial_tap_dance_entry_t td4 = { KC_BSPC, KC_LGUI, LCTL(KC_BSPC), KC_NO, TAPPING_TERM };
-  dynamic_keymap_set_tap_dance(3, &td4);
+  dynamic_keymap_set_tap_dance(0, &td1); // TD(0) 
+  vial_tap_dance_entry_t td2 = { KC_NO, MO(1), KC_CAPS_LOCK, KC_NO, TAPPING_TERM };
+  dynamic_keymap_set_tap_dance(1, &td2); // TD(1)
+  vial_tap_dance_entry_t td3 = { LALT(KC_SPACE), KC_LGUI, LALT(KC_SPACE), KC_NO, TAPPING_TERM };
+  dynamic_keymap_set_tap_dance(2, &td3); // TD(2)
+  vial_tap_dance_entry_t td4 = { KC_HOME, KC_HOME, C(S(KC_CAPS_LOCK)), KC_HOME, TAPPING_TERM }; 
+  dynamic_keymap_set_tap_dance(3, &td4); // TD(3)
   vial_tap_dance_entry_t td5 = { KC_PSCR, LCTL(KC_PSCR), LALT(KC_PSCR), KC_NO, TAPPING_TERM };
-  dynamic_keymap_set_tap_dance(4, &td5);
-  vial_tap_dance_entry_t td6 = { QK_LEAD, KC_GRAVE, TG(3), KC_NO, TAPPING_TERM };
-  dynamic_keymap_set_tap_dance(5, &td6);
+  dynamic_keymap_set_tap_dance(4, &td5); // TD(4)
+  vial_tap_dance_entry_t td6 = { QK_LEAD, KC_GRAVE, TG(6), KC_NO, TAPPING_TERM };
+  dynamic_keymap_set_tap_dance(5, &td6); // TD(5)
   vial_tap_dance_entry_t td7 = { KC_TAB, KC_NO, KC_NO, LGUI(KC_TAB), TAPPING_TERM };
-  dynamic_keymap_set_tap_dance(6, &td7);
-  vial_tap_dance_entry_t td8 = { KC_BSPC, KC_NO, LCTL(KC_BSPC), KC_NO, TAPPING_TERM };
-  dynamic_keymap_set_tap_dance(7, &td8);
-  vial_tap_dance_entry_t td9 = { KC_HOME, KC_HOME, C(S(KC_CAPS_LOCK)), KC_HOME, TAPPING_TERM };
-  dynamic_keymap_set_tap_dance(8, &td9); 
+  dynamic_keymap_set_tap_dance(6, &td7); // TD(6)
 
   /*  key overrides (values = bit shift)
   activate when the trigger key is pressed down (1),
@@ -207,19 +233,22 @@ void leader_end_user(void) {
 bool rgb_matrix_indicators_advanced_user(uint8_t led_min, uint8_t led_max) {
   for (uint8_t i = led_min; i < led_max; i++) {
     switch(get_highest_layer(layer_state|default_layer_state)) {
-      case 4: // L_EMOJI
+      case 7: // L_EMOJI
         rgb_matrix_set_color(i, RGB_BLUE);
         break;
-      case 3: // L_GAME
+      case 6: // L_GAME
         rgb_matrix_set_color(i, RGB_RED);
         break;
-      case 2: // L_03
-        rgb_matrix_set_color(i, RGB_GREEN);
-        break;
-      case 1: // L_02
+      case 4: // L_WINFN
         rgb_matrix_set_color(i, RGB_YELLOW);
         break;
-      default: // L_01
+      case 2: // L_MAC01
+        rgb_matrix_set_color(i, RGB_YELLOW);
+        break;
+      case 1: // L_WIN02
+        rgb_matrix_set_color(i, RGB_GREEN);
+        break;
+      default: // L_WIN01
         break;
       }
     }
