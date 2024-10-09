@@ -11,10 +11,7 @@
             "options": {
                 "cwd": "${workspaceFolder}/../vial-qmk"
             },
-            "group": {
-                "kind": "build",
-                "isDefault": true
-            }
+            "group": "build"
         }
     ]
 }
