@@ -289,6 +289,9 @@ bool rgb_matrix_indicators_advanced_user(uint8_t led_min, uint8_t led_max) {
         }
       }
     }
+  } else {
+    // Ensure the key 'i' is set to white when in the default layer state
+    rgb_matrix_set_color(0, RGB_WHITE);
   }
   return false;
 }
