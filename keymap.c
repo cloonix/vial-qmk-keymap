@@ -237,50 +237,44 @@ void leader_end_user(void) {
 
 // RGB modifications
 bool rgb_matrix_indicators_advanced_user(uint8_t led_min, uint8_t led_max) {
-  for (uint8_t i = led_min; i < led_max; i++) {
-    uint8_t layer = get_highest_layer(layer_state|default_layer_state); 
-    switch(layer) {
-      case 7: // L_EMOJI
-        rgb_matrix_set_color(i, RGB_OFF);
-        break;
-      case 6: // GAME
-        rgb_matrix_set_color(i, RGB_OFF);
-        break;
-      case 5: // MACFN
-        rgb_matrix_set_color(i, RGB_OFF);
-        break;
-      case 4: // WINFN
-        rgb_matrix_set_color(i, RGB_OFF);
-        break;
-      case 3: // MAC02
-        rgb_matrix_set_color(i, RGB_OFF);
-        break;
-      case 2: // MAC01
-        rgb_matrix_set_color(i, RGB_YELLOW);
-        break;
-      case 1: // WIN02
-        rgb_matrix_set_color(i, RGB_OFF);
-        break;
-      default: // WIN01
-        rgb_matrix_set_color(i, RGB_BLUE);
-        break;
+  if (get_highest_layer(layer_state) > 0) {
+    uint8_t layer = get_highest_layer(layer_state);
+    for (uint8_t row = 0; row < MATRIX_ROWS; ++row) {
+      for (uint8_t col = 0; col < MATRIX_COLS; ++col) {
+        uint8_t i = g_led_config.matrix_co[row][col];
+
+        switch(layer) {
+          case 7: // L_EMOJI
+            rgb_matrix_set_color(i, RGB_OFF);
+            break;
+          case 6: // GAME
+            rgb_matrix_set_color(i, RGB_OFF);
+            break;
+          case 5: // MACFN
+            rgb_matrix_set_color(i, RGB_OFF);
+            break;
+          case 4: // WINFN
+            rgb_matrix_set_color(i, RGB_OFF);
+            break;
+          case 3: // MAC02
+            if (keymap_key_to_keycode(layer, (keypos_t){col,row}) > KC_TRNS) {
+                rgb_matrix_set_color(i, RGB_RED);
+            } else {
+                rgb_matrix_set_color(i, RGB_OFF);
+            }
+            break;
+          case 2: // MAC01
+            rgb_matrix_set_color(i, RGB_YELLOW);
+            break;
+          case 1: // WIN02
+            rgb_matrix_set_color(i, RGB_OFF);
+            break;
+          default: // WIN01
+            rgb_matrix_set_color(i, RGB_BLUE);
+            break;
+        }
       }
     }
-
-  // if (get_highest_layer(layer_state) > 0) {
-  //     uint8_t layer = get_highest_layer(layer_state);
-
-  //     for (uint8_t row = 0; row < MATRIX_ROWS; ++row) {
-  //         for (uint8_t col = 0; col < MATRIX_COLS; ++col) {
-  //             uint8_t index = g_led_config.matrix_co[row][col];
-
-  //             if (index >= led_min && index < led_max && index != NO_LED &&
-  //             keymap_key_to_keycode(layer, (keypos_t){col,row}) > KC_TRNS) {
-  //                 rgb_matrix_set_color(index, RGB_RED);
-  //             }
-  //         }
-  //     }
-  // }
-  
+  }
   return false;
 }
