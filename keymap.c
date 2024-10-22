@@ -244,33 +244,20 @@ bool rgb_matrix_indicators_advanced_user(uint8_t led_min, uint8_t led_max) {
         uint8_t i = g_led_config.matrix_co[row][col];
 
         switch(layer) {
-          case 7: // L_EMOJI
-            rgb_matrix_set_color(i, RGB_OFF);
-            break;
-          case 6: // GAME
-            rgb_matrix_set_color(i, RGB_OFF);
-            break;
-          case 5: // MACFN
-            rgb_matrix_set_color(i, RGB_OFF);
-            break;
-          case 4: // WINFN
-            rgb_matrix_set_color(i, RGB_OFF);
-            break;
-          case 3: // MAC02
+          case 1: 
+          case 3: 
+          case 4: 
+          case 5: 
+          case 6: 
+          case 7: 
             if (keymap_key_to_keycode(layer, (keypos_t){col,row}) > KC_TRNS) {
                 rgb_matrix_set_color(i, RGB_RED);
             } else {
                 rgb_matrix_set_color(i, RGB_OFF);
             }
             break;
-          case 2: // MAC01
-            rgb_matrix_set_color(i, RGB_YELLOW);
-            break;
-          case 1: // WIN02
-            rgb_matrix_set_color(i, RGB_OFF);
-            break;
+          case 2:
           default: // WIN01
-            rgb_matrix_set_color(i, RGB_BLUE);
             break;
         }
       }
