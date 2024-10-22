@@ -238,27 +238,54 @@ void leader_end_user(void) {
 // RGB modifications
 bool rgb_matrix_indicators_advanced_user(uint8_t led_min, uint8_t led_max) {
   if (get_highest_layer(layer_state) > 0) {
-    uint8_t layer = get_highest_layer(layer_state);
+    uint8_t layer = get_highest_layer(layer_state|default_layer_state);
     for (uint8_t row = 0; row < MATRIX_ROWS; ++row) {
       for (uint8_t col = 0; col < MATRIX_COLS; ++col) {
         uint8_t i = g_led_config.matrix_co[row][col];
 
-        switch(layer) {
-          case 1: 
-          case 3: 
-          case 4: 
-          case 5: 
-          case 6: 
-          case 7: 
-            if (keymap_key_to_keycode(layer, (keypos_t){col,row}) > KC_TRNS) {
-                rgb_matrix_set_color(i, RGB_RED);
-            } else {
-                rgb_matrix_set_color(i, RGB_OFF);
-            }
-            break;
-          case 2:
-          default: // WIN01
-            break;
+        // Set the color of the key with i == 0 based on the layer value
+        if (i == 0) {
+          switch (layer) {
+            case 0:
+              rgb_matrix_set_color(i, RGB_WHITE);
+              break;
+            case 1:
+              rgb_matrix_set_color(i, RGB_BLUE);
+              break;
+            case 2:
+              rgb_matrix_set_color(i, RGB_ORANGE);
+              break;
+            case 3:
+              rgb_matrix_set_color(i, RGB_BLUE);
+              break;
+            case 4:
+              rgb_matrix_set_color(i, RGB_GREEN);
+              break;
+            case 5:
+              rgb_matrix_set_color(i, RGB_GREEN);
+              break;
+            default:
+              rgb_matrix_set_color(i, RGB_WHITE);
+              break;
+          }
+        } else {
+          switch(layer) {
+            case 1: 
+            case 3: 
+            case 4: 
+            case 5: 
+            case 6: 
+            case 7: 
+              if (keymap_key_to_keycode(layer, (keypos_t){col,row}) > KC_TRNS) {
+                  rgb_matrix_set_color(i, RGB_RED);
+              } else {
+                  rgb_matrix_set_color(i, RGB_OFF);
+              }
+              break;
+            case 2:
+            default: // WIN01
+              break;
+          }
         }
       }
     }
