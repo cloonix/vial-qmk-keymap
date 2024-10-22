@@ -277,7 +277,7 @@ bool rgb_matrix_indicators_advanced_user(uint8_t led_min, uint8_t led_max) {
             case 6: 
             case 7: 
               if (keymap_key_to_keycode(layer, (keypos_t){col,row}) > KC_TRNS) {
-                  rgb_matrix_set_color(i, RGB_RED);
+                  rgb_matrix_set_color(i, RGB_PURPLE);
               } else {
                   rgb_matrix_set_color(i, RGB_OFF);
               }
